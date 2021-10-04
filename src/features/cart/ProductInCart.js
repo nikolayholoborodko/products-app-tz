@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { counterIncrement, counterDecrement, removeFromCart } from './cartSlice'
 
 export const ProductInCart = ({ product }) => {
+    //useDispatch returns a reference to the dispatch function from the Redux store
     const dispatch = useDispatch()
 
     return (

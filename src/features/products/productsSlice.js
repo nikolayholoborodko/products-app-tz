@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+//create products data
 const initialState = [
     {
         id: 1,
@@ -24,11 +25,15 @@ const initialState = [
     },
 ]
 
+//create slice
 const productsSlice = createSlice({
     name: 'products',
     initialState: initialState,
     reducers: {},
 })
 
+//create selector functions
 export const selectProducts = state => state.products
+
+//export slice as reducer
 export default productsSlice.reducer

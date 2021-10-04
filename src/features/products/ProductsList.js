@@ -6,6 +6,7 @@ import { Container, Row } from 'react-bootstrap'
 import './products.css'
 
 export const ProductsList = () => {
+    // //call the selector function to get products from Redux store
     const products = useSelector(selectProducts)
 
     return (

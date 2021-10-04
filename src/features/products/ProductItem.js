@@ -4,10 +4,14 @@ import { addToCart } from '../cart/cartSlice'
 import { selectProductInCart } from '../cart/cartSlice'
 
 export const ProductItem = ({ product }) => {
+    //useDispatch returns a reference to the dispatch function from the Redux store
     const dispatch = useDispatch()
-    const productsInCart = useSelector(selectProductInCart)
-    const inCart = productsInCart.map(p => p.id).includes(product.id)
-
+    /*call selector function which return products in the cart and
+    check the item in the cart or not(return true or false).
+    If returns true - the product cannot be added to the cart*/
+    const inCart = useSelector(selectProductInCart)
+        .map(p => p.id)
+        .includes(product.id)
     return (
         <Col md={4}>
             <div className="products__item">
@@ -21,7 +25,7 @@ export const ProductItem = ({ product }) => {
                 >
                     Add to cart
                 </Button>
-                {product.name === 'papaya' ? (
+                {product.id === 3 ? (
                     <span className="sale swing">
                         <strong>$25 </strong>for every <strong>3 kg</strong>
                     </span>

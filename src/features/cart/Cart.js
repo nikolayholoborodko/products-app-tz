@@ -1,14 +1,15 @@
 import { useSelector } from 'react-redux'
 import { selectProductInCart } from './cartSlice'
+import { selectTotalPriceInCart } from './cartSlice'
 import { ProductInCart } from './ProductInCart'
 import { Container, Row } from 'react-bootstrap'
 import './cart.css'
 
 export const Cart = () => {
+    //call the selector function to get products in the cart
     const productsInCart = useSelector(selectProductInCart)
-    const totalPriceInCart = productsInCart
-        .map(product => product.total)
-        .reduce((acc, curr) => acc + curr, 0)
+    //call the selector function to calculate the sum of all products and return the result
+    const totalPriceInCart = useSelector(selectTotalPriceInCart)
 
     return (
         <div className="cart">
