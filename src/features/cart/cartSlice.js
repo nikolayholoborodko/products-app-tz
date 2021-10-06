@@ -32,13 +32,13 @@ const cartSlice = createSlice({
         counterIncrement: (state, action) => {
             const clickedItemInCart = state.find(p => p.id === action.payload)
             clickedItemInCart.amount++
-            // call the function of calculating the amount by position(sale conditions: papaya(id=3),any price per 3kg)
+            // call the function of calculating the amount by position
             getTotalPriceByItem(clickedItemInCart, 3, 3)
         },
         counterDecrement: (state, action) => {
             const clickedItemInCart = state.find(p => p.id === action.payload)
             clickedItemInCart.amount--
-            // call the function of calculating the amount by position(sale conditions: papaya(id=3),any price per 3kg)
+            // call the function of calculating the amount by position
             getTotalPriceByItem(clickedItemInCart, 3, 3)
         },
         removeFromCart: (state, action) => {
@@ -63,18 +63,3 @@ export const selectTotalPriceInCart = state =>
 
 //export slice as reducer
 export default cartSlice.reducer
-
-// const getTotalPriceByItem = (product, saleId, discountKg, discountPrice) => {
-//     const { amount, id, price } = product
-
-//     if (id === saleId) {
-//         if (amount % discountKg === 0) {
-//             product.total = (amount / discountKg) * discountPrice
-//         } else {
-//             //the quantity of parts of the promotional kilogram in the total quantity of kilograms.
-//             let part = Math.floor(amount / discountKg)
-//             product.total =
-//                 (amount - part * discountKg) * price + part * discountPrice
-//         }
-//     } else product.total = amount * price
-// }
