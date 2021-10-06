@@ -5,20 +5,15 @@ The function accepts the product, the id of the promotional product
 and the discount conditions as arguments.*/
 const getTotalPriceByItem = (product, saleId, discountKg) => {
     const { amount, id, price } = product
-    // 3x10=30(без скидки)
-    // 3х10=25(по условию технического задания)
-    //30/25=6/5=1.2
-    const discountPercent = 1.2 /*20% sale*/
+    let sale = 2 * price + price / 2
 
     if (id === saleId) {
         if (amount % discountKg === 0) {
-            product.total = (price * amount) / discountPercent
+            product.total = (amount / discountKg) * sale
         } else {
             //the quantity of parts of the promotional kilogram in the total quantity of kilograms.
             let part = Math.floor(amount / discountKg)
-            // calc price with sale 20%
-            let salePrice = (price * part * discountKg) / discountPercent
-            product.total = (amount - part * discountKg) * price + salePrice
+            product.total = (amount - part * discountKg) * price + part * sale
         }
     } else product.total = amount * price
 }
